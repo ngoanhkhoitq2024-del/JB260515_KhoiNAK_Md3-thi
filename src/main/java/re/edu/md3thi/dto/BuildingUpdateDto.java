@@ -1,9 +1,6 @@
 package re.edu.md3thi.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +23,7 @@ public class BuildingUpdateDto {
     private String areaUnit;  // đơn vị dtich xd
 
     @NotNull(message = "Ngày khởi công không được để trống")
+    @PastOrPresent(message = "Ngày khởi công không được ở tương lai")
     private LocalDate startDate;  // ngày khởi công
 
     @NotNull(message = "Thời gian xây dựng không được để trống")

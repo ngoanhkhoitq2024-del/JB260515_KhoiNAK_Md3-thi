@@ -40,6 +40,7 @@ public class Building {
     private String content;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private BuildingStatus status;
 
     private String image;

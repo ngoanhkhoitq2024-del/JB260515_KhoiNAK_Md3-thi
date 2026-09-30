@@ -1,9 +1,6 @@
 package re.edu.md3thi.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import re.edu.md3thi.entity.BuildingStatus;
@@ -25,6 +22,7 @@ public class BuildingCreateDto {
     private String areaUnit;  // đơn vị dtich xd
 
     @NotNull(message = "Ngày khởi công không được để trống")
+    @PastOrPresent(message = "Ngày khởi công không được ở tương lai")
     private LocalDate startDate;  // ngày khởi công
 
     @NotNull(message = "Thời gian xây dựng không được để trống")
@@ -35,9 +33,11 @@ public class BuildingCreateDto {
     private String timeUnit;  // đvị tính tgian
 
     @NotBlank(message = "Thiết kế không được để trống")
+    @Size(max = 255, message = "Nội dung thiết kế không được quá 255 kí tự")
     private String design;
 
-    @NotBlank(message = "Nội dung không được để trống")
+    @NotBlank(message = "Đơn vị diện tích không được để trống")
+    @Size(max = 255, message = "Đơn vị diện tích không được quá 255 kí tự")
     private String content;
 
     @NotNull(message = "Trạng thái không được để trống")
